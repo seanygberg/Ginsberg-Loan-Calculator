@@ -11,7 +11,29 @@ describe("Servers test (with setup and tear-down)", function() {
     expect(allServers['server' + serverId].serverName).toEqual('Alice');
   });
 
+  it('should not add a new server', function() {
+    serverNameInput.value = '';
+    submitServerInfo();
+
+    expect(Object.keys(allServers).length).toEqual(0);
+  });
+
+  it('should update the server table', function() {
+    submitServerInfo();
+    updateServerTable();
+
+    let curTable = document.querySelectorAll('#serverTable tbody tr td');
+    let name = curTable[0].innerText;
+    let tip = curTable[1].innerText;
+    expect(curTable.length).toEqual(2);
+    expect(name).toEqual("Alice");
+    expect(tip).toEqual("$0.00");
+  });
+
   afterEach(function() {
     // teardown logic
+    serverTbody.innerHTML = "";
+    serverId = 0;
+    allServers = {};
   });
 });
