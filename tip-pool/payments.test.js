@@ -37,11 +37,13 @@ describe("Payments test (with setup and tear-down)", function() {
         let billAmount = curTable[0];
         let tipAmount = curTable[1];
         let tipPercentage = curTable[2];
+        let deleteBtn = curTable[3];
 
-        expect(curTable.length).toEqual(3);
+        expect(curTable.length).toEqual(4);
         expect(billAmount.innerHTML).toEqual("$50");
         expect(tipAmount.innerHTML).toEqual("$10");
         expect(tipPercentage.innerHTML).toEqual("20%");
+        expect(deleteBtn.innerHTML).toEqual("X");
     });
 
     it("should update summary correctly", function() {

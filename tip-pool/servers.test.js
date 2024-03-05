@@ -25,9 +25,11 @@ describe("Servers test (with setup and tear-down)", function() {
     let curTable = document.querySelectorAll('#serverTable tbody tr td');
     let name = curTable[0].innerText;
     let tip = curTable[1].innerText;
-    expect(curTable.length).toEqual(2);
+    let deleteBtn = curTable[2].innerText;
+    expect(curTable.length).toEqual(3);
     expect(name).toEqual("Alice");
     expect(tip).toEqual("$0.00");
+    expect(deleteBtn).toEqual("X");
   });
 
   afterEach(function() {

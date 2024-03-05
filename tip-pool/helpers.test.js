@@ -38,6 +38,13 @@ describe("Helpers test (with setup and tear-down)", function() {
 
     });
 
+    it("should add the delete button", function() {
+        let myTr = document.createElement('tr');
+        appendDeleteButton(myTr);
+        expect(myTr.children.length).toEqual(1);
+        expect(myTr.firstChild.innerHTML).toEqual("X");
+    });
+
     afterEach(function() {
         billAmtInput.value = 0;
         tipAmtInput.value = 0;
