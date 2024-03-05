@@ -59,6 +59,22 @@ function appendPaymentTable(curPayment) {
   paymentTbody.append(newTr);
 }
 
+function appendDeleteButton(row, type) {
+  let button = document.createElement('td');
+  button.className = "deleteBtn";
+  button.innerText = "X";
+  button.addEventListener('click', removeElement);
+  row.append(button);
+}
+
+function removeElement(event) {
+  let element = event.target.closest("tr");
+  let id = element.id;
+  delete allServers[id];
+  element.parentNode.removeChild(element);
+  updateServerTable();
+}
+
 // Create table row element and pass to appendTd with calculated sum of all payment
 function updateSummary() {
   let tipPercentAvg;
